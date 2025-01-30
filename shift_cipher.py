@@ -26,4 +26,5 @@ def main():
         else:
             print(shifter(inp.split(',')[0], int(inp.split(',')[1])))
 
-bruteForce('ziffiqsiolvfcmm')
+# bruteForce('ziffiqsiolvfcmm')
+bruteForce('egdhetgxinxhcdilxiwdjibpcnutpghpcssxhipcithpcspsktghxinxhcdilxiwdjirdbudgihpcswdethmm')
