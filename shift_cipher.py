@@ -13,7 +13,7 @@ def shifter(cipher: str, shift: int):
 
 def bruteForce(cipher: str):
     for i in range(26):
-        print('For shift of ' + str((i + 25) % 26) + ' characters, code said \"' + shifter(cipher, (i + 25) % 26) + "\"")
+        print('For shift of ' + str(abs(i - 26)) + ' characters, code said \"' + shifter(cipher, i) + "\"")
 
 def main():
     while True:
@@ -24,4 +24,4 @@ def main():
         else:
             print(shifter(inp.split(',')[0], int(inp.split(',')[1])))
 
-main()
+bruteForce('ziffiqsiolvfcmm')
