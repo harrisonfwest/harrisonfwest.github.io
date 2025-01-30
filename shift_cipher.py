@@ -1,3 +1,5 @@
+import numpy as np
+
 def shifter(cipher: str, shift: int):
     text = list(cipher)
     ct = []
@@ -12,8 +14,8 @@ def shifter(cipher: str, shift: int):
 
 
 def bruteForce(cipher: str):
-    for i in range(26):
-        print('For shift of ' + str(abs(i - 26)) + ' characters, code said \"' + shifter(cipher, i) + "\"")
+    for i in np.arange(1, 26, 1):
+        print(f'For {i} shift, plaintext said \"{shifter(cipher, abs(i-26))}\". Decrypt by shifting an additional {abs(i-26)}')
 
 def main():
     while True:
