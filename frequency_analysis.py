@@ -39,4 +39,5 @@ for l in cipher:
             thisDict[let] += 1
 
 plt.bar(thisDict.keys(), thisDict.values())
+plt.set_xticks()
 plt.savefig('freq.png')
