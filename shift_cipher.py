@@ -26,5 +26,12 @@ def main():
         else:
             print(shifter(inp.split(',')[0], int(inp.split(',')[1])))
 
-# bruteForce('ziffiqsiolvfcmm')
-bruteForce('egdhetgxinxhcdilxiwdjibpcnutpghpcssxhipcithpcspsktghxinxhcdilxiwdjirdbudgihpcswdethmm')
+print(shifter('egdhe tgxin xhcdi lxiwd jibpc nutpg hpcss xhipc ithpc spskt ghxin xhcdi lxiwd jirdb udgih pcswd ethmm', 26-4))
+print(shifter('egdhe tgxin xhcdi lxiwd jibpc nutpg hpcss xhipc ithpc spskt ghxin xhcdi lxiwd jirdb udgih pcswd ethmm', 26-3))
+print(shifter('egdhe tgxin xhcdi lxiwd jibpc nutpg hpcss xhipc ithpc spskt ghxin xhcdi lxiwd jirdb udgih pcswd ethmm', 26-25))
+print(shifter('egdhe tgxin xhcdi lxiwd jibpc nutpg hpcss xhipc ithpc spskt ghxin xhcdi lxiwd jirdb udgih pcswd ethmm', 26-11))
+print(shifter('egdhe tgxin xhcdi lxiwd jibpc nutpg hpcss xhipc ithpc spskt ghxin xhcdi lxiwd jirdb udgih pcswd ethmm', 26-19))
+print(shifter('egdhe tgxin xhcdi lxiwd jibpc nutpg hpcss xhipc ithpc spskt ghxin xhcdi lxiwd jirdb udgih pcswd ethmm', 26-24))
+print(shifter('egdhe tgxin xhcdi lxiwd jibpc nutpg hpcss xhipc ithpc spskt ghxin xhcdi lxiwd jirdb udgih pcswd ethmm', 26-2))
+print(shifter('egdhe tgxin xhcdi lxiwd jibpc nutpg hpcss xhipc ithpc spskt ghxin xhcdi lxiwd jirdb udgih pcswd ethmm', 26-14))
+print(shifter('egdhe tgxin xhcdi lxiwd jibpc nutpg hpcss xhipc ithpc spskt ghxin xhcdi lxiwd jirdb udgih pcswd ethmm', 26-15))
