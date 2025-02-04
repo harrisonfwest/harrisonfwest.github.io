@@ -84,3 +84,37 @@ pt = ('when the government violates the peoples rights insurrection is for the p
 print(addCipher(pt, 16))
 print(multCipher(pt, 16))
 print(affineCipher(pt, 3, 24))
+
+keywordDict = {
+    ' ' : ' ',
+    'a' : 'j',
+    'b' : 'k',
+    'c' : 'l',
+    'd' : 'm',
+    'e' : 'p',
+    'f' : 'q',
+    'g' : 'r',
+    'h' : 'v',
+    'i' : 'w',
+    'j' : 'x',
+    'k' : 'y',
+    'l' : 'z',
+    'm' : 'c',
+    'n' : 'o',
+    'o' : 'n',
+    'p' : 's',
+    'q' : 't',
+    'r' : 'i',
+    's' : 'u',
+    't' : 'a',
+    'u' : 'b',
+    'v' : 'd',
+    'w' : 'e',
+    'x' : 'f',
+    'y' : 'g',
+    'z' : 'h',
+}
+answer = []
+for t in pt:
+    answer.append(keywordDict[t])
+print (''.join(answer))
