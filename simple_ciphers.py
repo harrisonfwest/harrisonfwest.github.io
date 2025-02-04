@@ -63,10 +63,23 @@ def keywordCipher(cipher: str, keyword: str, keyLetter : str) -> str:
             answer.append(codeDict[ord(str(t)) - 96])
     return(''.join(answer))
 
-
-pt = ('when the government violates the peoples rights insurrection is for the people and for each portion of'
+def hw3q4():
+    pt = ('when the government violates the peoples rights insurrection is for the people and for each portion of'
       ' the people the most sacred of the rights and the most indispensable of duties')
-print(addCipher(pt, 16))
-print(multCipher(pt, 16))
-print(affineCipher(pt, 3, 24))
-print(keywordCipher(pt, 'constitution', 'm'))
+    print(addCipher(pt, 16))
+    print(multCipher(pt, 16))
+    print(affineCipher(pt, 3, 24))
+    print(keywordCipher(pt, 'constitution', 'm'))
+
+def hw3q5():
+    ct = ('KCNQL HGKLS KCHFC LBNZL ARTFF HXGBN GKHFK LFCLZ JLPKC TKHKH FQLFF HYWNK LINDH QCNAT BNFFT XNNUN GZCNG '
+          'KCNZL AIFKA PDKPA NHFGL KBTHG KTHGN IKCNB NKCLI PFNIK LQALI PDNKC NFPYF KHKPK HLGTW QCTYN KZTFK LDLBY '
+          'HGNKC NTIIH KHLGF KNQPF NIHGT DTNFT ADHQC NAZHK CKCNB PWKHQ WHDTK HLGPF NIHGK CNFND LGIDL INJLP YALRN '
+          'PFHGX KCNFN KZLBN KCLIF KLXNK CNAQA LIPDN FTBNK CLILS NGDAJ QKHLG RGLZG TFTGT SSHGN KATGF SLABT KHLGE')
+    newCt = []
+    for t in ct:
+        if t.isalpha() and t != " ":
+            newCt.append(t.lower())
+    bruteForce(''.join(newCt)) # not a simple additive shift
+
+hw3q5()
