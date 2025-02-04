@@ -35,8 +35,11 @@ def multCipher(cipher: str, shift: int):
             ct.append(chr((((ord(t) - 97) * shift) % 26) + 97))
     return ''.join(ct)
 
+def affineCipher(cipher: str, multShift: int, addShift: int):
+    return (shifter(multCipher(cipher, multShift), addShift))
+
 pt = ('when the government violates the peoples rights insurrection is for the people and for each portion of'
       ' the people the most sacred of the rights and the most indispensable of duties')
 print(shifter(pt, 16))
 print(multCipher(pt, 16))
-
+print(affineCipher(pt, 3, 24))
