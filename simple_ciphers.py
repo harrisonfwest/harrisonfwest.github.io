@@ -26,7 +26,7 @@ def multCipher(cipher: str, shift: int) -> str:
     return ''.join(ct)
 
 def affineCipher(cipher: str, multShift: int, addShift: int):
-    return (addCipher(multCipher(cipher, multShift), addShift))
+    return (multCipher(addCipher(cipher, addShift), multShift))
 
 def keywordCipher(cipher: str, keyword: str, keyLetter : str) -> str:
     # TODO: FINISH THIS FUNCTION
