@@ -29,54 +29,39 @@ def affineCipher(cipher: str, multShift: int, addShift: int):
     return (multCipher(addCipher(cipher, addShift), multShift))
 
 def keywordCipher(cipher: str, keyword: str, keyLetter : str) -> str:
-    # TODO: FINISH THIS FUNCTION
-    codeDict = {
-        1 : '',
-        2 : '',
-        3 : '',
-        4 : '',
-        5: '',
-        6: '',
-        7: '',
-        8: '',
-        9: '',
-        10: '',
-        11: '',
-        12: '',
-        13: '',
-        14: '',
-        15: '',
-        16: '',
-        17: '',
-        18: '',
-        19: '',
-        20: '',
-        21: '',
-        22: '',
-        23: '',
-        24: '',
-        25: '',
-        26: '',
-    }
+    codeDict = {}
+    for i in range(1, 26):
+        codeDict[i] = ''
+    alph = 'a b c d e f g h i j k l m n o p q r s t u v w x y z'.split(' ')
     used = []
+    charNum = ord(keyLetter) - 96 # starting index in dictionary (of key letter)
     for t in keyword:
+        if t in used or t == " ":
+            continue
+        else:
+            codeDict[charNum] = t
+            if charNum == 26:
+                charNum = 1
+            else:
+                charNum += 1
+            used.append(t)
+    for t in alph:
         if t in used:
             continue
         else:
-            used.append(t)
-        # now we have no duplicates in the keyword
-
-    charNum = ord(t) - 96 # only subtract 96 because the dictionary is 1-indexed rather than 0-indexed as for mod math
-    newUsed = []
-    for t in used:
-        codeDict[charNum] = t
-        newUsed.append(t)
-        if charNum + 1 > 26:
-            charNum = charNum - 25
+            codeDict[charNum] = t
+            if charNum == 26:
+                charNum = 1
+            else:
+                charNum += 1
+        used.append(t)
+    answer = []
+    for t in cipher:
+        if t == " ":
+            answer.append(" ")
         else:
-            charNum = charNum + 1
-    # used[] is array of keyword w/o duplicates; newUsed is array of letters already inserted into alphabet key
-    # charNum is the current
+            answer.append(codeDict[ord(str(t)) - 96])
+    return(''.join(answer))
 
 
 pt = ('when the government violates the peoples rights insurrection is for the people and for each portion of'
@@ -84,37 +69,4 @@ pt = ('when the government violates the peoples rights insurrection is for the p
 print(addCipher(pt, 16))
 print(multCipher(pt, 16))
 print(affineCipher(pt, 3, 24))
-
-keywordDict = {
-    ' ' : ' ',
-    'a' : 'j',
-    'b' : 'k',
-    'c' : 'l',
-    'd' : 'm',
-    'e' : 'p',
-    'f' : 'q',
-    'g' : 'r',
-    'h' : 'v',
-    'i' : 'w',
-    'j' : 'x',
-    'k' : 'y',
-    'l' : 'z',
-    'm' : 'c',
-    'n' : 'o',
-    'o' : 'n',
-    'p' : 's',
-    'q' : 't',
-    'r' : 'i',
-    's' : 'u',
-    't' : 'a',
-    'u' : 'b',
-    'v' : 'd',
-    'w' : 'e',
-    'x' : 'f',
-    'y' : 'g',
-    'z' : 'h',
-}
-answer = []
-for t in pt:
-    answer.append(keywordDict[t])
-print (''.join(answer))
+print(keywordCipher(pt, 'constitution', 'm'))
