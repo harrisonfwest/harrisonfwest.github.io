@@ -37,39 +37,32 @@ def affineCipher(cipher: str, multShift: int, addShift: int) -> str:
     return (multCipher(addCipher(cipher, addShift), multShift))
 
 def keywordCipher(cipher: str, keyword: str, keyLetter : str) -> str:
-    codeDict = {}
-    for i in range(1, 26):
-        codeDict[i] = ''
-    alph = 'a b c d e f g h i j k l m n o p q r s t u v w x y z'.split(' ')
-    used = []
-    charNum = ord(keyLetter) - 96 # starting index in dictionary (of key letter)
+    codeAlph = {}
+    alph = 'abcdefghijklmnopqrstuvwxyz'
+    nodupe = ''
     for t in keyword:
-        if t in used or t == " ":
-            continue
+        if not (t in nodupe):
+            nodupe += t
+    used = ''
+    curr = ord(keyLetter) - 96
+    for s in nodupe:
+        codeAlph[curr] = s
+        used += s
+        if curr == 26:
+            curr = 1
         else:
-            codeDict[charNum] = t
-            if charNum == 26:
-                charNum = 1
-            else:
-                charNum += 1
-            used.append(t)
-    for t in alph:
-        if t in used:
-            continue
+            curr += 1
+    for v in alph:
+        if not (v in used):
+            codeAlph[curr] = v
+            used += v
+    answer = ''
+    for m in cipher:
+        if m == ' ':
+            answer += ' '
         else:
-            codeDict[charNum] = t
-            if charNum == 26:
-                charNum = 1
-            else:
-                charNum += 1
-        used.append(t)
-    answer = []
-    for t in cipher:
-        if t == " ":
-            answer.append(" ")
-        else:
-            answer.append(codeDict[ord(str(t)) - 96])
-    return(''.join(answer))
+            answer += codeAlph[ord(m) - 96]
+    return answer
 
 pt = ('when the government violates the peoples rights insurrection is for the people and for each portion of'
       ' the people the most sacred of the rights and the most indispensable of duties')
@@ -85,3 +78,15 @@ def bruteForceAffine(cipher: str) -> None:
     for add in range(1, 25):
         for mult in [3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]:
             print('mult decipher is ' + str(mult) + ', add decipher is ' + str(add) + ', message says ' + affineCipher(cipher, mult, add))
+
+
+print(addCipher(pt, 16))
+print(multCipher(pt, 17))
+print(affineCipher(pt, 3, 24))
+print(keywordCipher(pt, 'constitution', 'm'))
+
+newCt = ''
+for i in ct:
+    if i != ' ':
+        newCt += i.lower()
+print(affineCipher(newCt, 21, 11))
