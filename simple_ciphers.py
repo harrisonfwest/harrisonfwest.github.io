@@ -82,4 +82,16 @@ def hw3q5():
             newCt.append(t.lower())
     bruteForce(''.join(newCt)) # not a simple additive shift
 
-hw3q5()
+ct = ('KCNQL HGKLS KCHFC LBNZL ARTFF HXGBN GKHFK LFCLZ JLPKC TKHKH FQLFF HYWNK LINDH QCNAT BNFFT XNNUN GZCNG '
+          'KCNZL AIFKA PDKPA NHFGL KBTHG KTHGN IKCNB NKCLI PFNIK LQALI PDNKC NFPYF KHKPK HLGTW QCTYN KZTFK LDLBY '
+          'HGNKC NTIIH KHLGF KNQPF NIHGT DTNFT ADHQC NAZHK CKCNB PWKHQ WHDTK HLGPF NIHGK CNFND LGIDL INJLP YALRN '
+          'PFHGX KCNFN KZLBN KCLIF KLXNK CNAQA LIPDN FTBNK CLILS NGDAJ QKHLG RGLZG TFTGT SSHGN KATGF SLABT KHLGE')
+newCt = []
+for t in ct:
+    if t.isalpha() and t != " ":
+        newCt.append(t.lower())
+def affineBruteForce(cipher: str) -> None:
+    for add in range(1, 25):
+        for mult in [3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]:
+            print('mult decipher is ' + str(mult) + ', add decipher is ' + str(add) + ', message says ' + affineCipher(cipher, mult, add))
+affineBruteForce(''.join(newCt))
