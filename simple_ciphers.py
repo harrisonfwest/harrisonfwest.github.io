@@ -7,7 +7,7 @@ def addCipher(cipher: str, shift: int) -> str:
             answer += ' '
         else:
             num = ord(t) - 96 + shift
-            if num > 122:
+            while num > 26:
                 num -= 26
             answer += chr(num + 96)
     return answer
@@ -24,10 +24,10 @@ def multCipher(cipher: str, shift: int) -> str:
             answer += ' '
         else:
             num = (ord(t) - 96) * shift
-        while not (97 <= num <= 122):
-            if num > 122:
+        while not (1 <= num <= 26):
+            if num > 26:
                 num -= 26
-            elif num < 97:
+            elif num < 26:
                 num += 26
         answer += chr(num + 96)
     return answer
@@ -55,7 +55,11 @@ def keywordCipher(cipher: str, keyword: str, keyLetter : str) -> str:
     for v in alph:
         if not (v in used):
             codeAlph[curr] = v
-            used += v
+            if curr == 26:
+                curr = 1
+            else:
+                curr += 1
+        used += v
     answer = ''
     for m in cipher:
         if m == ' ':
@@ -84,6 +88,8 @@ print(addCipher(pt, 16))
 print(multCipher(pt, 17))
 print(affineCipher(pt, 3, 24))
 print(keywordCipher(pt, 'constitution', 'm'))
+
+
 
 newCt = ''
 for i in ct:
