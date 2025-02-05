@@ -94,4 +94,5 @@ def affineBruteForce(cipher: str) -> None:
     for add in range(1, 25):
         for mult in [3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]:
             print('mult decipher is ' + str(mult) + ', add decipher is ' + str(add) + ', message says ' + affineCipher(cipher, mult, add))
-affineBruteForce(''.join(newCt))
+
+print(addCipher(multCipher(''.join(newCt), 5), 3))
