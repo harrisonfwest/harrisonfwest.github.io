@@ -1,31 +1,39 @@
 import numpy as np
 
 def addCipher(cipher: str, shift: int) -> str:
-    text = list(cipher)
-    ct = []
-    for t in text:
-        if t == " ":
-            ct.append(" ")
+    answer = ''
+    for t in cipher:
+        if t == ' ':
+            answer += ' '
         else:
-            ct.append(chr(((ord(t) - 97) + shift) % 26 + 97))
-    return ''.join(ct)
+            num = ord(t) - 96 + shift
+            if num > 122:
+                num -= 26
+            answer += chr(num + 96)
+    return answer
 
 
-def bruteForce(cipher: str) -> None:
+def bruteForceAdd(cipher: str) -> None:
     for i in np.arange(1, 26, 1):
         print(f'For {i} shift, plaintext said \"{addCipher(cipher, abs(i-26))}\". Decrypt by shifting an additional {abs(i-26)}')
 
 def multCipher(cipher: str, shift: int) -> str:
-    text = list(cipher)
-    ct = []
-    for t in text:
-        if t == " ":
-            ct.append(" ")
+    answer = ''
+    for t in cipher:
+        if t == ' ':
+            answer += ' '
         else:
-            ct.append(chr((((ord(t) - 97) * shift) % 26) + 97))
-    return ''.join(ct)
+            num = (ord(t) - 96) * shift
+        while not (97 <= num <= 122):
+            if num > 122:
+                num -= 26
+            elif num < 97:
+                num += 26
+        answer += chr(num + 96)
+    return answer
 
-def affineCipher(cipher: str, multShift: int, addShift: int):
+
+def affineCipher(cipher: str, multShift: int, addShift: int) -> str:
     return (multCipher(addCipher(cipher, addShift), multShift))
 
 def keywordCipher(cipher: str, keyword: str, keyLetter : str) -> str:
@@ -63,36 +71,17 @@ def keywordCipher(cipher: str, keyword: str, keyLetter : str) -> str:
             answer.append(codeDict[ord(str(t)) - 96])
     return(''.join(answer))
 
-def hw3q4():
-    pt = ('when the government violates the peoples rights insurrection is for the people and for each portion of'
+pt = ('when the government violates the peoples rights insurrection is for the people and for each portion of'
       ' the people the most sacred of the rights and the most indispensable of duties')
-    print(addCipher(pt, 16))
-    print(multCipher(pt, 16))
-    print(affineCipher(pt, 3, 24))
-    print(keywordCipher(pt, 'constitution', 'm'))
 
-def hw3q5():
-    ct = ('KCNQL HGKLS KCHFC LBNZL ARTFF HXGBN GKHFK LFCLZ JLPKC TKHKH FQLFF HYWNK LINDH QCNAT BNFFT XNNUN GZCNG '
-          'KCNZL AIFKA PDKPA NHFGL KBTHG KTHGN IKCNB NKCLI PFNIK LQALI PDNKC NFPYF KHKPK HLGTW QCTYN KZTFK LDLBY '
-          'HGNKC NTIIH KHLGF KNQPF NIHGT DTNFT ADHQC NAZHK CKCNB PWKHQ WHDTK HLGPF NIHGK CNFND LGIDL INJLP YALRN '
-          'PFHGX KCNFN KZLBN KCLIF KLXNK CNAQA LIPDN FTBNK CLILS NGDAJ QKHLG RGLZG TFTGT SSHGN KATGF SLABT KHLGE')
-    newCt = []
-    for t in ct:
-        if t.isalpha() and t != " ":
-            newCt.append(t.lower())
-    bruteForce(''.join(newCt)) # not a simple additive shift
 
 ct = ('KCNQL HGKLS KCHFC LBNZL ARTFF HXGBN GKHFK LFCLZ JLPKC TKHKH FQLFF HYWNK LINDH QCNAT BNFFT XNNUN GZCNG '
           'KCNZL AIFKA PDKPA NHFGL KBTHG KTHGN IKCNB NKCLI PFNIK LQALI PDNKC NFPYF KHKPK HLGTW QCTYN KZTFK LDLBY '
           'HGNKC NTIIH KHLGF KNQPF NIHGT DTNFT ADHQC NAZHK CKCNB PWKHQ WHDTK HLGPF NIHGK CNFND LGIDL INJLP YALRN '
           'PFHGX KCNFN KZLBN KCLIF KLXNK CNAQA LIPDN FTBNK CLILS NGDAJ QKHLG RGLZG TFTGT SSHGN KATGF SLABT KHLGE')
-newCt = []
-for t in ct:
-    if t.isalpha() and t != " ":
-        newCt.append(t.lower())
-def affineBruteForce(cipher: str) -> None:
+
+
+def bruteForceAffine(cipher: str) -> None:
     for add in range(1, 25):
         for mult in [3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]:
             print('mult decipher is ' + str(mult) + ', add decipher is ' + str(add) + ', message says ' + affineCipher(cipher, mult, add))
-
-print(addCipher(multCipher(''.join(newCt), 5), 3))
