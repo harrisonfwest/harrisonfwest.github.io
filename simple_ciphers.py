@@ -83,12 +83,11 @@ def bruteForceAffine(cipher: str) -> None:
         for mult in [3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 25]:
             print('mult decipher is ' + str(mult) + ', add decipher is ' + str(add) + ', message says ' + affineCipher(cipher, mult, add))
 
-
+'''
 print(addCipher(pt, 16))
 print(multCipher(pt, 17))
 print(affineCipher(pt, 3, 24))
 print(keywordCipher(pt, 'constitution', 'm'))
-
 
 
 newCt = ''
@@ -96,3 +95,4 @@ for i in ct:
     if i != ' ':
         newCt += i.lower()
 print(affineCipher(newCt, 21, 11))
+'''
