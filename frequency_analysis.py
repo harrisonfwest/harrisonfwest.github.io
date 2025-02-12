@@ -32,6 +32,7 @@ def freqFinder(cipher: str, fileName:str):
         "y": 0,
         "z": 0
     }
+    plt.clf()
     for l in cipher:
         for let in thisDict.keys():
             if let == l:
