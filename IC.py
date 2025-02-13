@@ -39,7 +39,6 @@ from simple_ciphers import addCipher
 newCipher1 = ''
 newCipher2 = ''
 newCipher3 = ''
-newCipher4 = ''
 
 first = [16, 11]
 second = [24, 5, 15]
