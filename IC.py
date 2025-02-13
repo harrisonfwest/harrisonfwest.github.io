@@ -5,12 +5,8 @@ for val in numList:
     num += val**2
 print(num)
 '''
-from zmq.backend import first
 
-cipher = ('XPERG POEVO WIMPF EVOBE VODLS EWMQS MJQAF LBASI PAPQG OOPOR YPVVN PXOVL MWQEV OFUSK GHCZY TVOFA VIOLO'
-          'FQBGY TDLEY HTDSO DUPIM OWZTZ QEJVX THOPA LYSWJ VXDLE OHOLK EFAPQ MGWYF ZYTVO BEXHG TFDWA ILXLW PQSZL'
-          'PPJHC PXIEH OOXHC AUSIK GFXZV DYHTU SKGDF YIEFH OZXHG YTNLE OLCPX HOHZM IARVM JKRCW ITGSE OFXIL GATCI'
-          'AFJIL TTGYU SVEGV GELIU IPZOT QMJYH OWAIZ ATQWS ZGEGK')
+cipher = ('XPERG POEVO WIMPF EVOBE VODLS EWMQS MJQAF LBASI PAPQG OOPOR YPVVN PXOVL MWQEV OFUSK GHCZY TVOFA VIOLO FQBGY TDLEY HTDSO DUPIM OWZTZ QEJVX THOPA LYSWJ VXDLE OHOLK EFAPQ MGWYF ZYTVO BEXHG TFDWA ILXLW PQSZL PPJHC PXIEH OOXHC AUSIK GFXZV DYHTU SKGDF YIEFH OZXHG YTNLE OLCPX HOHZM IARVM JKRCW ITGSE OFXIL GATCI AFJIL TTGYU SVEGV GELIU IPZOT QMJYH OWAIZ ATQWS ZGEGK')
 cipherText = ''
 for char in cipher:
     if char != ' ':
@@ -29,6 +25,7 @@ for i in range(0, len(cipherText)):
         cipher3 += cipherText[i]
 
 
+
 '''
 from frequency_analysis import freqFinder
 freqFinder(cipher1, 'newOne')
@@ -37,12 +34,12 @@ freqFinder(cipher3, 'newThree')
 '''
 
 
-
 from simple_ciphers import addCipher
 
 newCipher1 = ''
 newCipher2 = ''
 newCipher3 = ''
+newCipher4 = ''
 
 first = [16, 11]
 second = [24, 5, 15]
