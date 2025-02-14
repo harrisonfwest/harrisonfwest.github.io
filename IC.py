@@ -14,15 +14,15 @@ for char in cipher:
 
 cipher1 = ''
 cipher2 = ''
-cipher3 = ''
+# cipher3 = ''
 
 for i in range(0, len(cipherText)):
-    if i % 3 == 0:
+    if i % 2 == 0:
         cipher1 += cipherText[i]
-    elif i % 3 == 1:
+    elif i % 2 == 1:
         cipher2 += cipherText[i]
-    elif i % 3 == 2:
-        cipher3 += cipherText[i]
+    # elif i % 3 == 2:
+        # cipher3 += cipherText[i]
 
 
 
@@ -30,31 +30,23 @@ for i in range(0, len(cipherText)):
 from frequency_analysis import freqFinder
 freqFinder(cipher1, 'newOne')
 freqFinder(cipher2, 'newTwo')
-freqFinder(cipher3, 'newThree')
-
+# freqFinder(cipher3, 'newThree')
 '''
 
 from simple_ciphers import addCipher
 
-newCipher1 = addCipher(cipher1, 16)
-newCipher2 = addCipher(cipher2, 24)
-newCipher3 = addCipher(cipher3, 23) # 23, 19, or 9
+# 1 pt e is ct g or o (24 or 16)
+# 2 pt e is ct e or o or a or h (0 or 16 or 4 or 23)
 
-finalText = ''
-for i in range(0, 100):
-    finalText = finalText + newCipher1[i] + newCipher2[i] + newCipher3[i]
-print(finalText)
+one = [24, 16]
+two = [16, 4, 23]
 
-newCipher3 = addCipher(cipher3, 19) # 23, 19, or 9
+for a in one:
+    for b in two:
+        newCipher1 = addCipher(cipher1, a)
+        newCipher2 = addCipher(cipher2, b)
 
-finalText = ''
-for i in range(0, 100):
-    finalText = finalText + newCipher1[i] + newCipher2[i] + newCipher3[i]
-print(finalText)
-
-newCipher3 = addCipher(cipher3, 9) # 23, 19, or 9
-
-finalText = ''
-for i in range(0, 100):
-    finalText = finalText + newCipher1[i] + newCipher2[i] + newCipher3[i]
-print(finalText)
+        finalText = ''
+        for i in range(0, 150):
+            finalText = finalText + newCipher1[i] + newCipher2[i]
+        print(finalText)
