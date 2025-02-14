@@ -31,26 +31,30 @@ from frequency_analysis import freqFinder
 freqFinder(cipher1, 'newOne')
 freqFinder(cipher2, 'newTwo')
 freqFinder(cipher3, 'newThree')
-'''
 
+'''
 
 from simple_ciphers import addCipher
 
-newCipher1 = ''
-newCipher2 = ''
-newCipher3 = ''
+newCipher1 = addCipher(cipher1, 16)
+newCipher2 = addCipher(cipher2, 24)
+newCipher3 = addCipher(cipher3, 23) # 23, 19, or 9
 
-first = [16, 11]
-second = [24, 5, 15]
-third = [23, 19, 9, 4, 22, 12, 6]
+finalText = ''
+for i in range(0, 100):
+    finalText = finalText + newCipher1[i] + newCipher2[i] + newCipher3[i]
+print(finalText)
 
-for a in first:
-    for b in second:
-        for c in third:
-            newCipher1 = addCipher(cipher1, a)
-            newCipher2 = addCipher(cipher2, b)
-            newCipher3 = addCipher(cipher3, c)
-            finalText = ''
-            for i in range(0, 100):
-                finalText = finalText + newCipher1[i] + newCipher2[i] + newCipher3[i]
-            print(finalText)
+newCipher3 = addCipher(cipher3, 19) # 23, 19, or 9
+
+finalText = ''
+for i in range(0, 100):
+    finalText = finalText + newCipher1[i] + newCipher2[i] + newCipher3[i]
+print(finalText)
+
+newCipher3 = addCipher(cipher3, 9) # 23, 19, or 9
+
+finalText = ''
+for i in range(0, 100):
+    finalText = finalText + newCipher1[i] + newCipher2[i] + newCipher3[i]
+print(finalText)

@@ -32,10 +32,12 @@ def freqFinder(cipher: str, fileName:str):
         "y": 0,
         "z": 0
     }
-    plt.clf()
     for l in cipher:
         for let in thisDict.keys():
             if let == l:
                 thisDict[let] += 1
+    plt.clf()
     plt.bar(thisDict.keys(), thisDict.values())
-    plt.savefig(fileName + '.png')
+    plt.show()
+    plt.clf()
+    #plt.savefig(fileName + '.png')
