@@ -7,11 +7,11 @@ html {
   font-size: 62.5%;
 }
 body {
-  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  font-size: 1.5em;
   line-height: 1.6;
   font-weight: 400;
-  font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #FFFFFF;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: rgb(220, 220, 220);
 }
 
 /**
